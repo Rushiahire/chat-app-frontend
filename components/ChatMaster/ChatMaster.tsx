@@ -1,0 +1,54 @@
+import React, { useState } from 'react'
+import styles from '../../styles/chat.module.css'
+import ChatSidebar from './ChatSidebar';
+import ChatSection from './ChatSection/ChatSection';
+
+const ChatMaster = () => {
+    const users: any = [
+        { id: 1, name: 'John Doe' },
+        { id: 2, name: 'Jane Smith' },
+        { id: 3, name: 'Alice Johnson' },
+        { id: 4, name: 'Bob Brown' },
+        { id: 5, name: 'Bob Brown' },
+        { id: 6, name: 'Bob Brown' },
+        { id: 7, name: 'Bob Brown' },
+        { id: 8, name: 'Bob Brown' },
+        { id: 9, name: 'Bob Brown' },
+        { id: 10, name: 'Bob Brown' },
+        { id: 11, name: 'Bob Brown' },
+        { id: 12, name: 'Bob Brown' },
+        { id: 13, name: 'Bob Brown' },
+        { id: 14, name: 'Bob Brown' },
+        { id: 15, name: 'Bob Brown' },
+        { id: 16, name: 'Bob Brown' },
+        { id: 17, name: 'Bob Brown' },
+        { id: 18, name: 'Bob Brown' },
+        { id: 19, name: 'Bob Brown' },
+        { id: 20, name: 'Bob Brown' },
+        { id: 21, name: 'Bob Brown' },
+        { id: 22, name: 'Bob Brown' },
+        { id: 23, name: 'Bob Brown' },
+        { id: 24, name: 'Bob Brown' },
+        // Add more users as needed
+    ];
+    const [selectedUser, setSelectedUser] = useState<any>(null);
+
+    const selectUser = (user: any) => {
+        setSelectedUser(user);
+    };
+    return (
+        <>
+
+            <div className="container ">
+                <div className="row vh-100 justify-content-center">
+                    <ChatSidebar users={users} selectUser={selectUser} selectedUser={selectedUser} />
+
+                    {/* Chat Section */}
+                    <ChatSection selectedUser={selectedUser} />
+                </div>
+            </div>
+        </>
+    )
+}
+
+export default ChatMaster

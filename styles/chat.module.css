@@ -1,0 +1,34 @@
+/* styles/Chat.module.css */
+.sidebar {
+    background-color: #f8f9fa;
+    border-right: 1px solid #dee2e6;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.list-group-item {
+    cursor: pointer;
+}
+
+.list-group-item.active {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+.chat-section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.message-list {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.message-input {
+    border-top: 1px solid #dee2e6;
+    padding: 15px;
+}

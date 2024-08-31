@@ -1,0 +1,25 @@
+.chat_msg_sender {
+    /* background-color: #00a884; */
+    /* color: white; */
+    border-radius: 9px;
+    padding: 2px 10px;
+}
+
+.chat_msg_receiver {
+    /* background-color: rgb(164, 164, 164);
+    color: white; */
+    border-radius: 9px;
+    padding: 2px 10px;
+}
+
+
+.chat_section_header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    border-bottom: 1px solid black;
+    padding: 10px 0px;
+
+    width: 100%;
+    z-index: 10;
+}
