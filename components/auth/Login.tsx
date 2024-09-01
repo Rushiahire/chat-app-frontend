@@ -3,6 +3,9 @@ import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { loginAPI } from "@/services/api/auth-api";
+import { toast } from "react-toastify";
+import { setCookie } from "cookies-next";
 
 
 const Login = () => {
@@ -23,13 +26,24 @@ const Login = () => {
     });
   }
 
-  const handleSubmit: any = (e: any) => {
+  const handleSubmit: any = async (e: any) => {
     e.preventDefault();
-    console.log('values', inputValues);
     setShowErr(true)
-    router.push('/chat')
-  }
+    let loginApi: any = await loginAPI(inputValues)
+    console.log(loginApi)
+    if (loginApi?.data?.status === "success") {
 
+      setCookie("AuthToken", loginApi?.data?.token, {
+        maxAge: 24 * 60 * 60,
+      });
+      localStorage.setItem("AuthToken", loginApi?.data?.token)
+
+      toast.success("Login Successfully")
+      router.push('/chat')
+    } else {
+      toast.error("Invalid Credentials")
+    }
+  }
 
   return (
     <>
@@ -44,7 +58,7 @@ const Login = () => {
             <div className="mb-4">
               <label htmlFor="password" className="form-label">Password</label>
               <div className="input-group">
-                <input type={`${showPassword ? "password" : "text"}`} className={`form-control ${(!inputValues.password && showErr) && "is-invalid"}`} name="password" id="password" value={inputValues.password} placeholder="Enter your password" autoComplete='off' onChange={handleChange} required />
+                <input type={`${showPassword ? "text" : "password"}`} className={`form-control ${(!inputValues.password && showErr) && "is-invalid"}`} name="password" id="password" value={inputValues.password} placeholder="Enter your password" autoComplete='off' onChange={handleChange} required />
                 <div className="input-group-prepend" onClick={handleShowPassword}>
                   <span className="input-group-text h-100" id="validationTooltipUsernamePrepend"> {showPassword ? <IoMdEyeOff /> : <IoEye />}
                   </span>

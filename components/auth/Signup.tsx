@@ -2,8 +2,12 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { IoMdEyeOff } from 'react-icons/io'
 import { IoEye } from 'react-icons/io5'
+import { registerAPI } from '@/services/api/auth-api'
+import { useRouter } from 'next/router'
+import { toast } from 'react-toastify'
 
 const Signup = () => {
+    const router = useRouter()
     const [showPassword, setShowPassword] = useState(false)
     const [showErr, setShowErr] = useState(false)
     const [inputValues, setInputValues] = useState({
@@ -26,11 +30,18 @@ const Signup = () => {
         });
     }
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
         console.log('values', inputValues);
-
         setShowErr(true)
+        let signUpApi: any = await registerAPI(inputValues)
+
+        if (signUpApi?.data?.status === "success") {
+            toast.success("Register Successfully")
+            router.push('/login')
+        } else {
+            toast.error("Failed to Register")
+        }
     }
 
     return (

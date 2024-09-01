@@ -46,11 +46,11 @@ const ChatSection = ({ selectedUser }: any) => {
     ]
     return (
         <div className={`col-lg-8 p-0 border`}>
-            <div className="d-flex flex-column vh-100">
-                <ChatSectionHeader />
-                <div className="flex-grow-1 overflow-auto p-3">
-                    {selectedUser ? (
-                        <>
+            <div className="d-flex flex-column justify-content-between vh-100">
+                {selectedUser ? (
+                    <>
+                        <ChatSectionHeader />
+                        <div className="flex-grow-1 overflow-auto p-3">
                             {
                                 messages.map((message: any, index: any) => {
                                     return (
@@ -85,11 +85,11 @@ const ChatSection = ({ selectedUser }: any) => {
                                     )
                                 })
                             }
-                        </>
-                    ) : (
-                        <div>Select a user to start chatting</div>
-                    )}
-                </div>
+                        </div>
+                    </>
+                ) : (
+                    <div className='d-flex align-items-center justify-content-center vh-100'>Select a user to start chatting</div>
+                )}
 
                 {/* {selectedUser && ( */}
                 <div className="p-3 border-top">

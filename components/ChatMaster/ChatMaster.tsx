@@ -1,9 +1,29 @@
-import React, { useState } from 'react'
-import styles from '../../styles/chat.module.css'
-import ChatSidebar from './ChatSidebar';
+import { useEffect, useState } from 'react';
 import ChatSection from './ChatSection/ChatSection';
+import ChatSidebar from './ChatSidebar/ChatSidebar';
+import useChatMasterHook from '@/hooks/useChatMasterHook';
+import getSidebarAPI from '@/services/api/sidebar-api';
 
-const ChatMaster = () => {
+const ChatMaster: any = () => {
+    // const { sidebarData } = useChatMasterHook()
+    // console.log("sidebar", sidebarData)
+
+    const getDataFromApi: any = async () => {
+        try {
+            const getSidebarData: any = await getSidebarAPI();
+            console.log("sidebar data", getSidebarData);
+
+        } catch (error) {
+            console.error('Failed to fetch sidebar data:', error);
+        }
+    }
+
+    // const getDataFromApi: any = async () => {
+    //     const getSidebarDataFromApi: any = await getSidebarAPI()
+    // }
+    useEffect(() => {
+        getDataFromApi();
+    }, [])
     const users: any = [
         { id: 1, name: 'John Doe' },
         { id: 2, name: 'Jane Smith' },

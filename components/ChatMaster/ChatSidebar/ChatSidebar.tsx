@@ -1,9 +1,11 @@
 import React from 'react';
-import styles from '../../styles/chat.module.css'
+import styles from '../../../styles/chat.module.css'
+import ChatSidebarHeader from './ChatSidebarHeader';
 
 const ChatSidebar = ({ users, selectUser, selectedUser }: any) => {
     return (
-        <div className={`col-md-4 p-0 ${styles.sidebar}`}>
+        <div className={`col-md-3 p-0 ${styles.sidebar}`}>
+            <ChatSidebarHeader />
             <div className="list-group overflow-auto h-100">
                 {users.map((user: any) => (
                     <button
