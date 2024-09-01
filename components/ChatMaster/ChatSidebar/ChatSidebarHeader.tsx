@@ -2,12 +2,14 @@ import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import chatSidebarStyles from '../../../styles/chatSidebar.module.css'
+import { deleteCookie } from 'cookies-next';
 
 const ChatSidebarHeader = () => {
 
     const router = useRouter()
     const handleLogout: any = () => {
         localStorage.removeItem("token")
+        deleteCookie("AuthToken");
         router.push('/')
     }
     return (

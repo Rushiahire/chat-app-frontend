@@ -3,13 +3,10 @@ import axios from 'axios';
 export const callGetAPI = async (url: string, cookie: any) => {
     let response: any;
 
-    let cookiee = "AuthToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJ1c2hpQGdtYWlsLmNvbSIsImlhdCI6MTcyNTE2NzQyOCwiZXhwIjoxNzI1MjUzODI4fQ.aAneNiOZzAGoB1sn_PhPcYI6BH8uYddxYyz339dJNII"
-
     const API_CONFIG = {
         headers: {
             Accept: 'application/json',
-            // cookies: `AuthToken ${cookie}`,
-            cookies: cookiee,
+            Authorization: `Bearer ${cookie}`,
         },
     };
 

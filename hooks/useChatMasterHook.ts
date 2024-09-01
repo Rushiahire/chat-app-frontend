@@ -1,4 +1,4 @@
-
+// 'use client';
 import React, { useEffect, useState } from 'react';
 import getSidebarAPI from '@/services/api/sidebar-api';
 
@@ -10,7 +10,7 @@ const useChatMasterHook: any = () => {
         try {
             const getSidebarData: any = await getSidebarAPI();
             console.log("sidebar data", getSidebarData);
-            setSidebarData(getSidebarData)
+            // setSidebarData(getSidebarData)
 
         } catch (error) {
             console.error('Failed to fetch sidebar data:', error);
